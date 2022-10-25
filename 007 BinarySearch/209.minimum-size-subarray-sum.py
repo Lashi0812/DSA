@@ -58,17 +58,22 @@
 from typing import List
 # @lc code=start
 class Solution:
-    def sums(self,nums,mid,target):
+    def check(self,nums,mid,target):
         temp = 0 
         # Calculate the first window
         for i in range(mid):
-            temp += nums[i]        
-        
+            temp += nums[i] 
+
+        isThere = (False,True)[temp>=target]  
+
         for i in range(0,len(nums)-mid):
             temp = temp - nums[i] + nums[i+mid]
-            if temp > target:
-                break
-        return temp
+            if temp >= target:
+                isThere=True
+        return isThere
+             
+        
+
                 
         
 
@@ -79,17 +84,19 @@ class Solution:
         lowerBound = 1
         upperBound = len(nums)
         ans = 0
-        
 
         while lowerBound<=upperBound:
             mid = (lowerBound+upperBound)>>1
-            temp = self.sums(nums,mid,target)
-            if temp>target:                             
+            if self.check(nums,mid,target):
+                ans = mid
                 upperBound = mid -1
             else:
-                ans = mid
                 lowerBound = mid +1
-        return ans
+        return ans 
+
+        
+
+
         
 
 if __name__ == "__main__":
