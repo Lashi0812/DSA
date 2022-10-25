@@ -1,10 +1,6 @@
 # Given the sorted array with distinct element count the all the pair such that sums equal to k [i is not equal to j]
 
 
-from itertools import count
-from telnetlib import Telnet
-
-
 class Solution():
     # Brute Forece Apporach
     def bfa(self,array,target):
