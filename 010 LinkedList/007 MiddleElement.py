@@ -1,6 +1,5 @@
 #%%
-from typing import MutableSequence
-from typing_extensions import Self
+from typing import MutableSequence,Self
 
 
 #%%
@@ -33,26 +32,33 @@ class LinkedList:
             nodes.append(str(node.data))
             node = node.next
         nodes.append("None")
+        
         return " -> ".join(nodes)
+
+    def del_head(self) -> Self|None:
+        
+        if self.head is not None:
+            self.head = self.head.next
+        return self
     
-    def reverse(self) -> Self:
-        previous = None
-        cur = self.head
-        while cur is not None:
-            nxt = cur.next
-            print(previous,cur,nxt)
-            cur.next = previous
-            previous = cur
-            cur = nxt
-        self.head = previous
-        return self  
+    def findMiddle(self) -> Node|None:
+        if self.head is None: return self.head
+        slow = self.head
+        fast = self.head
+        while (fast.next is not None                   # In case of odd length  
+               and fast.next.next is not None):        # In case of even length 
+            slow = slow.next                            #type: ignore
+            fast = fast.next.next
+        return slow
         
-        
+    
 # %%
 if __name__ == "__main__":
-    lList1 =  LinkedList([1,3,5,6,14,18,20])
-    print(lList1)
-    print(lList1.reverse())
-    print(lList1)
+    lList =  LinkedList([1,3,5,6,14,18,20])
+    print(lList)
+    print(lList.findMiddle())
+    print(lList.del_head())
+    print(lList.findMiddle())
+    
 
 # %%
