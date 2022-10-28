@@ -46,9 +46,9 @@ class LinkedList:
         if node is None or node.next is None:
             return self.del_head()
         else:                       
-            while node.next.next is not None: 
-                node = node.next
-            node.next = None
+            while node.next.next is not None: #type: ignore
+                node = node.next #type: ignore
+            node.next = None #type: ignore
             return self
         
     def delete(self,ele) -> Self|None:
