@@ -1,46 +1,48 @@
-#%%
+# %%
 from typing import MutableSequence, Optional
 
-#%%
+
+# %%
 class Node:
-    def __init__(self,data) -> None:
-        self.next:Optional[Node] = None
+    def __init__(self, data) -> None:
+        self.next: Optional[Node] = None
         self.data = data
-    
+
     def __repr__(self) -> str:
         return str(self.data)
 
+
 class Stack:
-    def __init__(self,data:Optional[MutableSequence]=None) -> None:
-        self.head:Optional[Node] = None
-        
+    def __init__(self, data: Optional[MutableSequence] = None) -> None:
+        self.head: Optional[Node] = None
+
         if data is not None and data:
             for ele in data:
                 self.push(ele)
-        
-    def push(self,data):
+
+    def push(self, data):
         node = Node(data)
         if self.head is None:
             self.head = node
         else:
-            node.next = self.head 
+            node.next = self.head
             self.head = node
-    
+
     def pop(self):
         if self.head is not None:
             self.head = self.head.next
         else:
             print("you cant perform pop operation in the empty stack")
-    
+
     def top(self):
         return self.head
-    
-    def isEmpty(self):
+
+    def is_empty(self):
         if self.head is None:
             return True
         else:
             return False
-    
+
     def __repr__(self) -> str:
         node = self.head
         nodes = []
@@ -48,9 +50,9 @@ class Stack:
             nodes.append(node.data)
             node = node.next
         return str(nodes)
-        
 
-#%%  
+
+# %%
 if __name__ == "__main__":
     stack = Stack()
     print(stack)
