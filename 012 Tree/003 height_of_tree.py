@@ -12,6 +12,9 @@ class Node:
         self.left: Optional[Node] = None
         self.right: Optional[Node] = None
 
+    def __repr__(self):
+        return str(self.data)
+
 
 def height(node):
     if node is None:
