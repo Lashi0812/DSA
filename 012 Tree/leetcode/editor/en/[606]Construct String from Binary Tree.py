@@ -53,12 +53,19 @@ class Solution(object):
         :rtype: str
         """
 
-        def _inorder(node):
+        def _preorder(node, string=""):
             if node is None:
-                return
-            # todo
-            _inorder(node.left)
-            _inorder(node.right)
-
-
+                return string
+            string += str(node.val)
+            if node.left is None and node.right is None:
+                return string
+            string += "("
+            string = _preorder(node.left, string)
+            string += ")"
+            if node.right is not None:
+                string += "("
+                string = _preorder(node.right, string)
+                string += ")"
+            return string
+        return _preorder(root)
 # leetcode submit region end(Prohibit modification and deletion)
