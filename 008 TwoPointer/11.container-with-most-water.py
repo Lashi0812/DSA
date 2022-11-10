@@ -20,7 +20,7 @@
 # Find two lines that together with the x-axis form a container, such that the
 # container contains the most water.
 # 
-# Return the maximum amount of water a container can store.
+# Return the maximum amt of water a container can store.
 # 
 # Notice that you may not slant the container.
 # 
